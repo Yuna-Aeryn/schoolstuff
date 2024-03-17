@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>자바스크립트용</title>
+        <meta charset="UTF-8">
+    <script>
+        function over(obj){
+            obj.src="a.png"
+        }
+        function leave(obj){
+            obj.src="img2.png"
+        }
+    </script>
+    </head> 
+<body>
+    <img src="a.png" alt="whatthefuck"
+        onmouseover ="over(this)"
+        onmouseout="leave(this)">
+</body>
+</html> 
