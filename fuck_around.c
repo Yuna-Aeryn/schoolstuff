@@ -1,5 +1,6 @@
 #include <stdio.h>
-#define End
 
-int a = 5;
-printf(%d, a);
+int main() {
+  printf("Hello World!");
+  return 0;
+} 
