@@ -1,4 +1,5 @@
 {
     "cmake.configureOnOpen": true,
-    "liveServer.settings.CustomBrowser": "firefox"
+    "liveServer.settings.CustomBrowser": "firefox",
+    "git.enabled": false
 }
