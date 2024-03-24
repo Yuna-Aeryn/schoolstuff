@@ -3,39 +3,29 @@
 
 <head>
     <meta charset="utf-8">
-    <title>비트 연산</title>
+
+    <title>중첩 리스트 만들기</title>
     <script>
-        function digit8(v) { // 숫자 v를 8비트 2진수로 변환
-            let str = "";
-            for (let i = 0; i < 8; i++, v <<= 1) {
-                if ((v & 0x80)) str += "1";
-                else str += "0";
+        let rep = prompt("반복회수를 입력하세요");
+        if (rep == null) {
+            // 취소 버튼이나 다이얼로그를 닫은 경우
+        }
+        else if (rep == "") {
+            // 문자열 입력 없이 확인 버튼 누른 경우
+        }
+        else {
+            var i=0;
+            while (i < rep) {
+                i=i+1;
+                document.write(i+"번째 div 입니다.<br>")
             }
-            return str;
         }
     </script>
+
 </head>
 
 <body>
-    <h3>비트 논리 연산과 시프트 연산</h3>
-    <hr>
-    <script>
-        let x = 10, y = 3;
-        document.write("<pre>");
-        document.write("x=" + x + ", y=" + y + "<br>");
-        document.write("x : " + digit8(x) + "<br>");
-        document.write("y : " + digit8(y) + "<br>");
-        document.write("<hr>");
-        document.write("x & y : " + digit8(x & y) + "<br>");
-        document.write("x | y : " + digit8(x | y) + "<br>");
-        document.write("x ^ y : " + digit8(x ^ y) + "<br>");
-        document.write("~x : " + digit8(~x) + "<br>");
-        document.write("<hr>");
-        document.write("x << 1 : " + digit8(x << 1) + " (" + (x << 1) + ")<br>");
-        document.write("x >> 1 : " + digit8(x >> 1) + " (" + (x >> 1) + ")<br>");
-        document.write("x >>> 1: " + digit8(x >>> 1) + " (" + (x >>> 1) + ")");
-        document.write("</pre>");
-    </script>
+
 </body>
 
 </html
