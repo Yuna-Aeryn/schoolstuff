@@ -1,0 +1,41 @@
+속성: 이름, DB, 웹프, 자료구조,
+메소드: 점수의 합계를 계산해서 반환
+평균을 계산해서 반환하는 메소드
+다음과 같은 속성과 메소드가 있는
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>평균 계산의 object 연습</title>
+    <script>        
+        function mean() { return this.balance; }
+        // 사용자객체만들기 
+        let students = new Object();
+        students.name = "황기태";
+        students.database = "111";
+        students.webprogramming = 35000;
+        students.datascience = inquiry;
+        students.mean = mean;
+        account.withdraw = withdraw;
+    </script>
+</head>
+
+<body>
+    <h3>new Object()로 사용자 객체 만들기</h3>
+    <hr>
+    <script>
+        // 객체활용
+        document.write("account : ");
+        document.write(account.owner + ", ");
+        document.write(account.code + ", ");
+        document.write(account.balance + "<br>");
+        account.deposit(10000); // 10000원저금
+        document.write("10000원 저금후 잔액은 " + account.inquiry() + "<br>");
+        account.withdraw(5000); // 5000원인출
+        document.write("5000원 인출후 잔액은 " + account.inquiry() + "<br>");
+    </script>
+</body>
+
+</html>
