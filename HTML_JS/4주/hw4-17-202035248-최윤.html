@@ -5,14 +5,22 @@
     <meta charset="utf-8">
     <title>평균 계산의 object 연습</title>
     <script>
-        function mean(lecture) {
-            return this.lecture[0];
+        var x 
+        var y
+        function total() {
+            x = this.db + this.웹프 + this.자료구조;
+            return x;
+        }
+        function mean() {
+            y = x / 3;
+            return y;
         }
         let students = new Object();
-        students.name = "황기태", "왕보현", "최창";
-        students.db = "0", "90", "80";
-        students.웹프 = 3, 100, 98;
-        students.자료구조 = [2, 90, 60];
+        students.name = "황기태"
+        students.db = 0
+        students.웹프 = 3
+        students.자료구조 = 3
+        students.total = total;
         students.mean = mean;
     </script>
 </head>
@@ -21,7 +29,12 @@
     <h3>메소드 사용해보기</h3>
     <hr>
     <script>
-        document.write(students.mean(자료구조));
+        document.write("학생의 이름은 " + students.name + "입니다.<br>");
+        document.write("학생의 db 성적은 " + students.db + "점 입니다<br>");
+        document.write("학생의 웹프 성적은 " + students.웹프 + "점 입니다.<br>");
+        document.write("학생의 자료구조 성적은 " + students.자료구조 + "점 입니다.<br>");
+        document.write("학생의 총합 점수는 " + students.total() + "점 입니다.<br>");
+        document.write("학생의 평균점수는 " + students.mean() + "점 입니다.<br>");
     </script>
 </body>
 
