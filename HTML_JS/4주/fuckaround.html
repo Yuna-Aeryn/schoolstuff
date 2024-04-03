@@ -1,1 +1,43 @@
-i love you
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>new Object()로 사용자 객체 만들기</title>
+    <script>
+        //메소드로 사용할 3개의 함수작성
+        function inquiry() { return this.balance; } 
+        function deposit(money) { this.balance += money; } 
+        function withdraw(money) {
+            this.balance -= money;
+            return money;
+        }
+        // 사용자객체만들기
+        let account = new Object();
+        account.owner = "황기태"; 
+        account.code = "111"; 
+        account.balance = 35000; 
+        account.inquiry = inquiry;
+        account.deposit = deposit; 
+        account.withdraw = withdraw;
+    </script>
+</head>
+
+<body>
+    <h3>new Object()로 사용자 객체 만들기</h3>
+    <hr>
+    <script>
+        // 객체활용
+        document.write(account.inquiry() + "<br>")
+        document.write("account : ");
+        document.write(account.owner + ", ");
+        document.write(account.code + ", ");
+        document.write(account.balance + "<br>");
+        account.deposit(10000); // 10000원저금
+        document.write("10000원 저금후 잔액은 " + account.inquiry() + "<br>");
+        account.withdraw(5000); // 5000원인출
+        document.write("5000원 인출후 잔액은 " + account.inquiry() + "<br>");
+    </script>
+</body>
+
+</html>
