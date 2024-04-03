@@ -44,6 +44,6 @@ element pop(StackType* s)
    if (is_empty(s)) {
    fprintf(stderr, "스택 공백 에러\n");
    exit(1);
-   }-
+   }
    else return s->data[(s->top)--];
 }
