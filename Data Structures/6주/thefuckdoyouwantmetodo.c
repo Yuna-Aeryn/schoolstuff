@@ -1,1 +1,0 @@
-what exactly a i looing for huh
