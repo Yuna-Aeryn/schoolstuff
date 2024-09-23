@@ -4,7 +4,7 @@
 #include <assert.h>
 #include <windows.h>
 
-int main(int argc, char *argv[])
+public static void int main(int argc, char *argv[])
 {
     if (argc != 2) { 
         fprintf(stderr, "usage: cpu <string>\n");
