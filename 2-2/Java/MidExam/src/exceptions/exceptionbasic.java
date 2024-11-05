@@ -1,4 +1,4 @@
-package exam;
+package exceptions;
 
 import java.io.FileNotFoundException;
 
