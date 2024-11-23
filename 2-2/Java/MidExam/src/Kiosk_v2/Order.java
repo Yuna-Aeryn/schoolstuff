@@ -1,17 +1,19 @@
 package Kiosk_v2;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
     private MenuItem menuItem;
     private List<Option> selOptions = new ArrayList<>();
 
-    // getter, setter
-    public MenuItem getMenuItem() {
+    // getter, setter 생략
+
+    public MenuItem getMenu() {
         return menuItem;
     }
 
-    public void setMenuItem(MenuItem menuItem) {
+    public void setMenu(MenuItem menuItem) {
         this.menuItem = menuItem;
     }
 

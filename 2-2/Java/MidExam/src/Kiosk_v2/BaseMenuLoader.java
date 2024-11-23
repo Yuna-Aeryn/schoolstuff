@@ -1,5 +1,4 @@
 package Kiosk_v2;
-
 import java.util.*;
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class BaseMenuLoader implements MenuLoader {
         m.setOptions(op);
         menu.add(m);
 
-        if(menu.size() != 4) {
+        if(menu.size() != 2) {
             throw new LoadMenuException("메뉴 로딩 실패");
         } else {
             return menu;
