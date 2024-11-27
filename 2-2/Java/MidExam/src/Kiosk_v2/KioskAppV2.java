@@ -86,7 +86,7 @@ public class KioskAppV2 {
     }
 
     public static void main(String[] args) {
-        KioskAppV2 app = new KioskAppV2(new BaseMenuLoader()); // 어떤 메뉴 로더를 사용할 것인지 결정.
+        KioskAppV2 app = new KioskAppV2(new JsonMenuLoader()); // 어떤 메뉴 로더를 사용할 것인지 결정.
         app.start();
     }
 

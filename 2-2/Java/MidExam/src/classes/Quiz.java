@@ -31,9 +31,9 @@ public class Quiz {
         System.out.print("검색할 이름을 입력하세요: ");
         String name = scanner.next();
 
-//        int total = students.get(name).values().stream().mapToInt(Integer::intValue).sum();
+        int total = students.get(name).values().stream().mapToInt(Integer::intValue).sum();
 
-        System.out.printf("%s의 총점은 %d 평균은 %d 입니다!!\n", name, total, total / students.get(name).size());
+        System.out.printf("%s의 총점은 %d 평균은 %d 입니다!!\n", name, total / students.get(name).size());
     }
 }
 

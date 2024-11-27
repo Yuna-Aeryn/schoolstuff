@@ -1,4 +1,4 @@
-// 컴퓨터공학과 202035248 최윤
+package exam;// 컴퓨터공학과 202035248 최윤
 
 import java.util.ArrayList;
 import java.util.Scanner;
