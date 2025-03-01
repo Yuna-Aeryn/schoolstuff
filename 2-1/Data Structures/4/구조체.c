@@ -65,7 +65,7 @@ int main(void)
 {
     element ie = { 20190001,
                    "Hong",
-	                "Gachon Univ." };
+	                "Gachon Univ." }; 
     element oe;
 
     push(ie);
