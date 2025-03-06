@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 int main(void) {
     float b, n, p, gp;
@@ -15,14 +14,14 @@ int main(void) {
     //calculate breakpoint for price
     b = gp / p;
 
-    //print whether its worth it or not
+    //print whether its worth it or n
     if ( b < n ) {
-        printf("its worth buying the group tickets for you!");
+        printf("it'll be worth buying the group tickets!\n");
     }
     else if ( b > n ) {
-        printf("its not worth buying the group tickets for you!");
+        printf("it won't be worth buying the group tickets!\n");
     }
     else if ( b == n ) {
-        printf("it won't matter whether you buy individual or group tickets.");
+        printf("it won't matter whether you buy individual or group tickets.\n");
     }
 }
