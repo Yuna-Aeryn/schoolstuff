@@ -17,18 +17,29 @@ void printResult(int pnum, int *pid, int *at, int *bt, int *tt, int *rt) {
 
 	printf("  avg. of TT: %.2f\n", (float)sum_tt/pnum);
 	printf("  avg. of RT: %.2f\n", (float)sum_rt/pnum);
+}	
+
+//순서정리용 compare 함수
+int compare(const void* a, const void* b) {
+    return (*(int*)a - *(int*)b);
 }
+
 
 void FIFO(int pnum, int *pid, int *at, int *bt, int *tt, int *rt) {
 	printf("  Scheme: First-In-First-Out\n");
-	/* fifo는 대충 온순서로 실행시키고 stf는 걍 시간 비교해서 짧은 순서대로 하고 그럼되는거 아닌가*/
+	/* fifo는 대충 온순서로 실행시키고 stf는 걍 시간 비교해서 짧은 순서대로 하고 그럼되는거 */
+	/* 구조체로 각 프로세스별로 도착시간 실행시간 같은거 넣고 실행시간 비교해서 우선순위 정하고 끝난시간 - 도착시간 하고 */
 	/* fill in */
+
+	int at_numbers[] = {at[pid[0]], at[pid[1]], at[pid[2]], at[pid[3]], at[pid[4]]};
+	int array_size = sizeof(at_numbers) / sizeof(at_numbers[0]);
+	qsort(at_numbers, array_size, sizeof(int), compare);
+	int fifo_bt[] = {at_numbers[0]};
 	
 }
 
 void SJF(int pnum, int *pid, int *at, int *bt, int *tt, int *rt) {
 	printf("  Scheme: Shortest-Job-First t\n");
-
 	/* fill in */
 
 }
@@ -65,4 +76,3 @@ int main(void) {
 	
 	return 0;
 }
-
