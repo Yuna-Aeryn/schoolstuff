@@ -19,7 +19,8 @@ int main(void) {
         printf("it'll be worth buying the group tickets!\n");
     }
     else if ( b > n ) {
-        printf("it won't be worth buying the group tickets!\n");
+
+
     }
     else if ( b == n ) {
         printf("it won't matter whether you buy individual or group tickets.\n");

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 예제-2</title>
+</head>
+<body>
+    <h2>상품 주문</h2>
+    <hr>
+    <form>
+        <p>
+            <label for="amount">수량: </label>
+            <select id="amount">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+            <label for="color">컬러: </label>
+            <input id="color" type="color">
+        </p>
+        <p>
+            <label for="buyer_name">주문자: </label>
+            <input id="buyer_name" type="text" placeholder="이름을 입력하세요">
+            <p></p>
+            <label for="memo">메모: </label>
+            <textarea id="memo" placeholder="메모를 입력하세요" rows="10">
+            </textarea>
+        </p>
+        <p>
+            <label>옵션:</label>
+            <input name="options" type="checkbox">마우스
+            <input name="options" type="checkbox">키보드
+            <input name="options" type="checkbox">노트북 가방
+        </p>
+        <p>
+            <label>배송비</label>
+            <input name="shipping" type="radio">선불(3000원)
+            <input name="shipping" type="radio">착불
+        </p>
+        <hr>
+        <p>
+            <input type="submit" value="주문하기">
+            <input type="reset" value="취소하기">
+        </p>
+    </form>
+</body
