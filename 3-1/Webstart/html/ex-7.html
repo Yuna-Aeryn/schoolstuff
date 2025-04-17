@@ -1,0 +1,46 @@
+<!--컴퓨터공학과, 202035248, 최윤-->
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* div 와 h1 모두 */
+        div, h1 {
+            color: orangered;
+        }
+        /* div 하위에 위치하는 모든 h2 */
+        div h2 {
+            color: mediumblue;
+        }
+        /* div 바로 아래(자식) h1 */
+        div>h1 {
+            color: lightslategray;
+        }
+        /* div 바로 다음에 오는 h1 */
+        div+h1 {
+            font-style: italic;
+        }
+        /* div 다음에 오는 모든 h2 */
+        div~h2 {
+            margin-left: 50px;
+        }
+  </style>
+</head>
+
+<body>
+  <h1>Welcome to MyTube</h1>        <!--div, h1 적용-->
+  <div>
+    <h1>New</h1>                    <!--div > h1 적용-->
+    <h2>New movie1</h2>             <!--div h2 적용-->
+    <h2>New movie2</h2>             <!--div h2 적용-->
+    <span>
+      <h1>This Week</h1>            <!--div, h1 적용, div > h1 미적용-->
+    </span>
+  </div>
+  <h1>Best</h1>                     <!--div + h1 적용-->
+  <h2>New movie3</h2>               <!--div ~ h2 적용-->
+  <h2>New movie4</h2>               <!--div ~ h2 적용-->
+</body>
+</html>
