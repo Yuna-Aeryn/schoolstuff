@@ -7,6 +7,12 @@ import math
 # load the dataset
 x_train, y_train = load_data()
 
+# load the dataset
+import pandas as pd
+
+df = pd.read_csv("ex1data1.txt", delimiter='/t')
+print(df)
+
 # print x_train
 print("Type of x_train:",type(x_train))
 print("First five elements of x_train are:\n", x_train[:5])
@@ -57,6 +63,7 @@ def compute_cost(x, y, w, b):
     for i in range(m):
         h_w = w * x[i] + b
         total_cost += (h_w - y[i]) ** 2
+
     total_cost /= (2 * m)
 
     return total_cost
@@ -72,6 +79,7 @@ print(f'Cost at initial w: {cost:.3f}')
 # Public tests
 from public_tests import *
 compute_cost_test(compute_cost)
+
 
 # UNQ_C2
 # GRADED FUNCTION: compute_gradient
@@ -94,25 +102,15 @@ def compute_gradient(x, y, w, b):
     dj_dw = 0
     dj_db = 0
 
-
-    # Loop over examples
-    total_cost = 0
     for i in range(m):
         h_w = w * x[i] + b
-        total_cost += (h_w - y[i]) ** 2
+        dj_dw += (h_w - y[i]) * x[i]
+        dj_db += (h_w - y[i])
 
-    total_cost /= (2 * m)
+    dj_dw /= m
+    dj_db /= m
 
     return dj_dw, dj_db
-
-# Compute and display gradient with w initialized to zeroes
-initial_w = 0
-initial_b = 0
-
-tmp_dj_dw, tmp_dj_db = compute_gradient(x_train, y_train, initial_w, initial_b)
-print('Gradient at initial w, b (zeros):', tmp_dj_dw, tmp_dj_db)
-
-compute_gradient_test(compute_gradient)
 
 # Compute and display cost and gradient with non-zero w
 test_w = 0.2
@@ -123,25 +121,6 @@ print('Gradient at test w, b:', tmp_dj_dw, tmp_dj_db)
 
 
 def gradient_descent(x, y, w_in, b_in, cost_function, gradient_function, alpha, num_iters):
-    """
-    Performs batch gradient descent to learn theta. Updates theta by taking
-    num_iters gradient steps with learning rate alpha
-
-    Args:
-      x :    (ndarray): Shape (m,)
-      y :    (ndarray): Shape (m,)
-      w_in, b_in : (scalar) Initial values of parameters of the model
-      cost_function: function to compute cost
-      gradient_function: function to compute the gradient
-      alpha : (float) Learning rate
-      num_iters : (int) number of iterations to run gradient descent
-    Returns
-      w : (ndarray): Shape (1,) Updated values of parameters of the model after
-          running gradient descent
-      b : (scalar)                Updated value of parameter of the model after
-          running gradient descent
-    """
-
     # number of training examples
     m = len(x)
 
@@ -180,8 +159,7 @@ initial_b = 0.
 iterations = 1500
 alpha = 0.01
 
-w,b,_,_ = gradient_descent(x_train ,y_train, initial_w, initial_b,
-                     compute_cost, compute_gradient, alpha, iterations)
+w,b,_,_ = gradient_descent(x_train ,y_train, initial_w, initial_b, compute_cost, compute_gradient, alpha, iterations)
 print("w,b found by gradient descent:", w, b)
 
 m = x_train.shape[0]
@@ -203,8 +181,8 @@ plt.ylabel('Profit in $10,000')
 # Set the x-axis label
 plt.xlabel('Population of City in 10,000s')
 
-predict1 = 3.5 * w + b
-print('For population = 35,000, we predict a profit of $%.2f' % (predict1*10000))
+predict1 = 330.0 * w + b
+print('For Busan with a population = 3,300,000, we predict a profit of $%.2f' % (predict1*10000))
 
-predict2 = 7.0 * w + b
-print('For population = 70,000, we predict a profit of $%.2f' % (predict2*10000))
+predict2 = 940.0 * w + b
+print('For Seoul with a population = 9,400,000, we predict a profit of $%.2f' % (predict2*10000))

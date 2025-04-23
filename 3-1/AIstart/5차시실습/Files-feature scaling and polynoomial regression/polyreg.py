@@ -17,15 +17,12 @@ y = 1 + x**2
 
 # Engineer features
 X = x**2      #<-- added engineered feature
-
 # create target data
 x = np.arange(0, 20, 1)
 y = x**2
-
 # engineer features .
 X = np.c_[x, x**2, x**3]   #<-- added engineered feature
 X_features = ['x','x^2','x^3']
-
 fig,ax=plt.subplots(1, 3, figsize=(12, 3), sharey=True)
 for i in range(len(ax)):
     ax[i].scatter(X[:,i],y)
@@ -36,13 +33,11 @@ plt.show()
 x = np.arange(0,20,1)
 X = np.c_[x, x**2, x**3]
 print(f"Peak to Peak range by column in Raw        X:{np.ptp(X,axis=0)}")
-
 # add mean_normalization
 X = zscore_normalize_features(X)
 print(f"Peak to Peak range by column in Normalized X:{np.ptp(X,axis=0)}")
 x = np.arange(0,20,1)
 y = x**2
-
 X = np.c_[x, x**2, x**3]
 X = zscore_normalize_features(X)
 
