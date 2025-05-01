@@ -1,0 +1,37 @@
+<!--컴퓨터공학과, 202035248, 최윤-->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS ex-5</title>
+</head>
+
+<body>
+    <script>
+        // 일반적인 함수
+        function calc(a, b) {
+            return a + b;
+        }
+
+        // 변수에 함수를 할당
+        const add1 = function (a, b) {
+            return a + b;
+        }
+
+        // 함수를 인자로 받는 함수
+        function add2(a, b, callback) {
+            return callback(a + b);
+        }
+
+        console.log(calc(20, 30));  // 50
+        console.log(add1(10, 20)); // 30
+        // 함수 호출시 콜백함수를 인자로 전달
+        add2(20, 20, function (result) {
+            console.log(result); // 40
+        });
+    </script>
+</body>
+
+</html>

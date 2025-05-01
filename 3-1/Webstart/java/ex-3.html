@@ -1,0 +1,35 @@
+<!--컴퓨터공학과, 202035248, 최윤-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let level = prompt("등급을 입력하세요(A/B/C)");
+
+        if(level == 'A') {
+            console.log('VIP Level');
+        } else if(level == 'B') {
+            console.log('Basic Level');
+        } else {
+            console.log('No Level');
+        }
+
+        switch (level) {
+            case 'A':
+                console.log('VIP Level'); break;
+            case 'B':
+                console.log('Basic Level'); break;
+            default:
+                console.log('No Level'); break;
+        }        
+    </script>
+</body>
+
+</html>
