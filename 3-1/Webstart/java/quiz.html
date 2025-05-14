@@ -1,0 +1,87 @@
+<!--컴퓨터공학과, 202035248, 최윤-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    /* tab button */
+    .tab {
+      background-color: #555;
+      color: white;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      font-size: 17px;
+      width: 25%;
+    }
+
+    /* change background color when mouse over */
+    .tab:hover {
+      background-color: #777;
+    }
+
+    /* default content */
+    .content {
+      color: white;
+      display: none;
+      padding: 50px;
+      text-align: center;
+    }
+
+    /* Style each tab content individually */
+    #About {
+      background-color: tomato;
+    }
+
+    #Products {
+      background-color: darkolivegreen;
+    }
+
+    #Technology {
+      background-color: dodgerblue;
+    }
+
+    #Downloads {
+      background-color: orange;
+    }
+  </style>
+  <title>Homepage</title>
+</head>
+
+<body>
+  <div id="About" class="content">
+    <h1>About</h1>
+    <p>우리 회사에 대한 소개 입니다.</p>
+  </div>
+
+  <div id="Products" class="content">
+    <h1>Products</h1>
+    <p>회사의 주력 제품들에 대한 안내 입니다. 기술은 기술 영역에서 자세히 설명합니다.</p>
+  </div>
+
+  <div id="Technology" class="content">
+    <h1>Technology</h1>
+    <p>보유한 주요 기술과 특허, 기술적 특장점등을 자세히 소개 합니다.</p>
+  </div>
+
+  <div id="Downloads" class="content">
+    <h1>Downloads</h1>
+    <p>회사 제품 카다로그를 다운로드 할 수 있습니다.</p>
+  </div>
+
+  <button class="tab" onclick="openMenu('About', this, 'tomato')" id="default">About</button>
+  <button class="tab" onclick="openMenu('Products', this, 'darkolivegreen')">Products</button>
+  <button class="tab" onclick="openMenu('Technology', this, 'dodgerblue')">Technology</button>
+  <button class="tab" onclick="openMenu('Downloads', this, 'orange')">Downloads</button>
+</body>
+
+</html>

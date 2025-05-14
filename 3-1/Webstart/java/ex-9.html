@@ -1,0 +1,67 @@
+<!--컴퓨터공학과, 202035248, 최윤-->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+    </style>
+    <title>JS ex-9</title>
+</head>
+
+<body>
+    <body>
+        <h2>주소록 프로그램</h2>
+        <form>
+          이름: <input type="text" name="name"><br> 전화번호: <input type="text" name="tel"><br>
+          <input type=button value="저장" onclick='addAddr()'>
+          <input type=button value="리셋" onclick='resetAddr()'>
+          <input type=button value="json보기" onclick='showJson()'>
+        </form>
+        <hr>
+        <h3>주소 목록</h3>
+        <ul id="addrlist">
+
+        </ul>
+        <script>
+        addrlist = new Array();
+        class Address {
+        constructor(name, tel) {
+        this.name = name;
+        this.tel = tel;
+            }
+        }
+        function addAddr() {
+        const newAddr = new Address(document.getElementsByName("name")[0].value,document.getElementsByName('tel')[0].value);
+        addrlist.push(newAddr);
+        showAddr();
+        }
+        function showAddr() {
+            // 출력 영역 초기화
+            const result = document.getElementById('addrlist');
+            result.innerHTML = '';
+
+            // 주소배열을 순회하면서 li태그를 생성하여 출력영역에 추가
+            addrlist.forEach(function (addr) {
+                const item = document.createElement('li');
+                const txt = document.createTextNode(addr.name + " , " + addr.tel);
+                item.appendChild(txt);
+                result.appendChild(item);
+            });
+        }
+        function resetAddr() {
+            addrlist.length = 0; // 배열 초기화, addrlist = [] or addrlist = new Array() 도 가능
+            showAddr();
+        }
+        function showJson() {
+            const json = JSON.stringify(addrlist);
+            alert(json);
+        }  
+        </script>
+      </body>
+</body>
+</html>
