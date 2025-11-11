@@ -1,8 +1,6 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 
 // Firebase Imports
-// These are imported via URLs in a real-world <script type="module"> tag,
-// but we'll use npm-style imports for this React file.
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
@@ -23,8 +21,6 @@ import {
 } from 'firebase/firestore';
 
 // --- Global Firebase & App Config ---
-// These variables are expected to be globally available in the browser.
-// We provide fallbacks for a standard React environment.
 const firebaseConfig = {
   apiKey: "AIzaSyCOggkRb4hF3gUT3Gf6aJXes3zm6_Yspzg",
   authDomain: "dieter-512e1.firebaseapp.com",
@@ -41,7 +37,6 @@ const initialAuthToken =
     : null;
 
 // --- Firebase Initialization ---
-// This setup is for a React app.
 let app, auth, db;
 try {
   app = initializeApp(firebaseConfig);
@@ -53,7 +48,6 @@ try {
 }
 
 // --- Recommended Daily Allowances (RDAs) ---
-// Using general FDA guidelines.
 const RDA = {
   calories: 2000,
   protein: 50, // grams
@@ -68,7 +62,8 @@ const RDA = {
  */
 const LoadingSpinner = () => (
   <div className="flex justify-center items-center">
-    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
+    {/* STYLING: Changed border color */}
+    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
   </div>
 );
 
@@ -77,7 +72,8 @@ const LoadingSpinner = () => (
  */
 const Modal = ({ title, message, onClose }) => (
   <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300">
-    <div className="bg-white p-6 rounded-lg shadow-xl w-full max-w-md transform transition-all duration-300 scale-100 opacity-100">
+    {/* STYLING: Increased rounded corners and shadow */}
+    <div className="bg-white p-6 rounded-xl shadow-2xl w-full max-w-md transform transition-all duration-300 scale-100 opacity-100">
       <h3 className="text-lg font-medium leading-6 text-gray-900">{title}</h3>
       <div className="mt-2">
         <p className="text-sm text-gray-500">{message}</p>
@@ -85,7 +81,8 @@ const Modal = ({ title, message, onClose }) => (
       <div className="mt-4">
         <button
           type="button"
-          className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          // STYLING: Changed button color
+          className="inline-flex justify-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
           onClick={onClose}
         >
           Close
@@ -131,14 +128,17 @@ const ImageUploader = ({ onImageUpload, isLoading }) => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-xl font-semibold text-gray-800 mb-4">
+    // STYLING: Updated card appearance
+    <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-gray-100">
+      {/* STYLING: Updated header color */}
+      <h2 className="text-xl font-semibold text-green-900 mb-4">
         Add Food Item
       </h2>
       <label
         htmlFor="file-upload"
+        // STYLING: Updated drag-over colors
         className={`flex justify-center w-full h-48 px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md cursor-pointer transition-colors duration-200 ${
-          dragOver ? 'border-indigo-500 bg-indigo-50' : ''
+          dragOver ? 'border-green-500 bg-green-50' : 'hover:border-gray-400'
         }`}
         onDrop={handleDrop}
         onDragOver={handleDragOver}
@@ -160,7 +160,8 @@ const ImageUploader = ({ onImageUpload, isLoading }) => {
             />
           </svg>
           <div className="flex text-sm text-gray-600">
-            <span className="relative font-medium text-indigo-600 hover:text-indigo-500">
+            {/* STYLING: Updated text color */}
+            <span className="relative font-medium text-green-700 hover:text-green-600">
               Upload a photo
             </span>
             <input
@@ -216,8 +217,10 @@ const DailySummary = ({ totals }) => {
   ];
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-xl font-semibold text-gray-800 mb-4">
+    // STYLING: Updated card appearance
+    <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-gray-100">
+      {/* STYLING: Updated header color */}
+      <h2 className="text-xl font-semibold text-green-900 mb-4">
         Today's Summary
       </h2>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -239,7 +242,8 @@ const DailySummary = ({ totals }) => {
                     strokeWidth="3.8"
                   />
                   <path
-                    className="text-indigo-600"
+                    // STYLING: Updated progress ring color
+                    className="text-green-500"
                     d="M18 2.0845
                       a 15.9155 15.9155 0 0 1 0 31.831
                       a 15.9155 15.9155 0 0 1 0 -31.831"
@@ -269,8 +273,10 @@ const DailySummary = ({ totals }) => {
  * Displays the list of food items eaten today.
  */
 const FoodList = ({ foodEntries }) => (
-  <div className="bg-white p-6 rounded-lg shadow-md">
-    <h2 className="text-xl font-semibold text-gray-800 mb-4">Today's Log</h2>
+  // STYLING: Updated card appearance
+  <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-gray-100">
+    {/* STYLING: Updated header color */}
+    <h2 className="text-xl font-semibold text-green-900 mb-4">Today's Log</h2>
     <div className="space-y-4 max-h-96 overflow-y-auto pr-2">
       {foodEntries.length === 0 ? (
         <p className="text-gray-500 text-center py-4">
@@ -285,18 +291,22 @@ const FoodList = ({ foodEntries }) => (
             <div>
               <p className="font-semibold text-gray-800">{entry.foodName}</p>
               <p className="text-sm text-gray-500">
-                {entry.calories.toFixed(0)} kcal &bull;{' '}
-                {entry.nutrients.protein.toFixed(0)}g P &bull;{' '}
-                {entry.nutrients.fat.toFixed(0)}g F &bull;{' '}
-                {entry.nutrients.carbohydrates.toFixed(0)}g C
+                {/* Add checks for entry.calories and entry.nutrients to avoid crashes if data is malformed */}
+                {entry.calories ? entry.calories.toFixed(0) : 0} kcal &bull;{' '}
+                {entry.nutrients?.protein ? entry.nutrients.protein.toFixed(0) : 0}g P &bull;{' '}
+                {entry.nutrients?.fat ? entry.nutrients.fat.toFixed(0) : 0}g F &bull;{' '}
+                {entry.nutrients?.carbohydrates ? entry.nutrients.carbohydrates.toFixed(0) : 0}g C
               </p>
             </div>
-            <span className="text-sm text-gray-400">
-              {entry.timestamp.toDate().toLocaleTimeString([], {
-                hour: '2-digit',
-                minute: '2-digit',
-              })}
-            </span>
+            {/* Add a check for entry.timestamp */}
+            {entry.timestamp && (
+              <span className="text-sm text-gray-400">
+                {entry.timestamp.toDate().toLocaleTimeString([], {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })}
+              </span>
+            )}
           </div>
         ))
       )}
@@ -304,35 +314,33 @@ const FoodList = ({ foodEntries }) => (
   </div>
 );
 
+
 /**
  * Displays AI-powered recommendations.
  */
-const Recommendation = ({
-  onGetRecommendation,
-  recommendation,
-  isLoading,
-}) => (
-  <div className="bg-white p-6 rounded-lg shadow-md">
-    <h2 className="text-xl font-semibold text-gray-800 mb-4">
+// --- NEW: Removed `onGetRecommendation` prop ---
+const Recommendation = ({ recommendation, isLoading }) => (
+  // STYLING: Updated card appearance
+  <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-gray-100">
+    {/* STYLING: Updated header color */}
+    <h2 className="text-xl font-semibold text-green-900 mb-4">
       AI Diet Coach
     </h2>
-    {isLoading ? (
-      <LoadingSpinner />
-    ) : recommendation ? (
-      <p className="text-gray-600 italic">"{recommendation}"</p>
-    ) : (
-      <p className="text-gray-500">
-        Get a personalized recommendation for the rest of your day based on what
-        you've eaten so far.
-      </p>
-    )}
-    <button
-      onClick={onGetRecommendation}
-      disabled={isLoading}
-      className="mt-4 w-full inline-flex justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50"
-    >
-      {isLoading ? 'Generating...' : 'Get Recommendation'}
-    </button>
+    <div className="min-h-[60px] flex items-center">
+      {isLoading ? (
+        <div className="w-full">
+          <LoadingSpinner />
+          <p className="text-sm text-gray-500 text-center mt-2">Generating a new tip...</p>
+        </div>
+      ) : recommendation ? (
+        <p className="text-gray-700 italic">"{recommendation}"</p>
+      ) : (
+        <p className="text-gray-500">
+          Add a food item to get your first tip of the day.
+        </p>
+      )}
+    </div>
+    {/* --- NEW: Removed the button --- */}
   </div>
 );
 
@@ -347,6 +355,9 @@ export default function App() {
   const [isLoadingImage, setIsLoadingImage] = useState(false);
   const [isLoadingRec, setIsLoadingRec] = useState(false);
   const [error, setError] = useState(null);
+
+  // --- NEW: Ref to hold the debounce timer for recommendations ---
+  const recommendationTimerRef = useRef(null);
 
   // --- 1. Authentication Effect ---
   // On mount, check auth state.
@@ -393,8 +404,6 @@ export default function App() {
     const startOfTodayTimestamp = Timestamp.fromDate(startOfToday);
 
     // Create the query.
-    // This is the "daily reset" logic. We only fetch documents
-    // with a timestamp greater than or equal to the start of today.
     const entriesCollection = collection(
       db,
       `artifacts/${appId}/users/${userId}/foodEntries`
@@ -402,8 +411,6 @@ export default function App() {
     const q = query(
       entriesCollection,
       where('timestamp', '>=', startOfTodayTimestamp)
-      // Note: In a real app, you'd sort by timestamp, which
-      // requires a composite index in Firestore. We'll sort on the client.
     );
 
     // Subscribe to the query.
@@ -415,7 +422,13 @@ export default function App() {
           entries.push({ id: doc.id, ...doc.data() });
         });
         // Sort by date on the client
-        entries.sort((a, b) => b.timestamp.toDate() - a.timestamp.toDate());
+        entries.sort((a, b) => {
+          // Add a check in case timestamp is missing
+          if (a.timestamp && b.timestamp) {
+            return b.timestamp.toDate() - a.timestamp.toDate();
+          }
+          return 0;
+        });
         setFoodEntries(entries);
       },
       (err) => {
@@ -458,6 +471,7 @@ export default function App() {
   };
 
   // --- 4. Gemini API Call: Image Analysis ---
+  // This function is correct: it calls your backend.
   const handleImageUpload = async (file) => {
     if (!file) return;
     setIsLoadingImage(true);
@@ -466,63 +480,7 @@ export default function App() {
     try {
       const base64ImageData = await fileToBase64(file);
 
-      const apiKey = ''; // Leave empty; provided by the platform.
-      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-
-      const systemPrompt = `You are an expert nutritionist. Analyze the food in this image and return ONLY a valid JSON object. Do not include markdown \`\`\`json\`\`\` wrappers or any other text. The JSON object must strictly follow the provided schema.`;
-
-      const payload = {
-        systemInstruction: {
-          parts: [{ text: systemPrompt }],
-        },
-        contents: [
-          {
-            role: 'user',
-            parts: [
-              { text: 'Analyze this food item and return its nutritional information.' },
-              {
-                inlineData: {
-                  mimeType: file.type,
-                  data: base64ImageData,
-                },
-              },
-            ],
-          },
-        ],
-        generationConfig: {
-          responseMimeType: 'application/json',
-          responseSchema: {
-            type: 'OBJECT',
-            properties: {
-              foodName: {
-                type: 'STRING',
-                description: "e.g., 'Banana' or 'Chicken Salad'",
-              },
-              calories: {
-                type: 'NUMBER',
-                description: 'Total calories (kcal)',
-              },
-              nutrients: {
-                type: 'OBJECT',
-                properties: {
-                  protein: {
-                    type: 'NUMBER',
-                    description: 'Protein in grams',
-                  },
-                  fat: { type: 'NUMBER', description: 'Total fat in grams' },
-                  carbohydrates: {
-                    type: 'NUMBER',
-                    description: 'Total carbohydrates in grams',
-                  },
-                },
-                required: ['protein', 'fat', 'carbohydrates'],
-              },
-            },
-            required: ['foodName', 'calories', 'nutrients'],
-          },
-        },
-      };
-      
+      // Call your own backend at http://localhost:3001
       const response = await fetch('http://localhost:3001/analyze-image', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -533,32 +491,25 @@ export default function App() {
       });
 
       if (!response.ok) {
-        throw new Error(`Google API error: ${response.statusText}`);
+        // Get the error message from your backend's JSON response
+        const errData = await response.json();
+        throw new Error(`Backend error: ${errData.error || response.statusText}`);
       }
 
-      const result = await response.json();
+      // Your backend already returns clean JSON, so just parse it
+      const foodData = await response.json();
 
-      if (
-        result.candidates &&
-        result.candidates[0].content &&
-        result.candidates[0].content.parts[0].text
-      ) {
-        const jsonText = result.candidates[0].content.parts[0].text;
-        const foodData = JSON.parse(jsonText);
-
-        // Save to Firestore
-        if (db && userId) {
-          const entriesCollection = collection(
-            db,
-            `artifacts/${appId}/users/${userId}/foodEntries`
-          );
-          await addDoc(entriesCollection, {
-            ...foodData,
-            timestamp: Timestamp.now(),
-          });
-        }
-      } else {
-        throw new Error('Invalid response structure from Gemini API.');
+      // Save to Firestore
+      if (db && userId) {
+        const entriesCollection = collection(
+          db,
+          `artifacts/${appId}/users/${userId}/foodEntries`
+        );
+        await addDoc(entriesCollection, {
+          ...foodData,
+          // This timestamp is CRITICAL for the "Today's Log" query
+          timestamp: Timestamp.now(), 
+        });
       }
     } catch (err) {
       console.error('Error analyzing image:', err);
@@ -569,7 +520,15 @@ export default function App() {
   };
 
   // --- 5. Gemini API Call: Get Recommendation ---
+  // This function is the *same* as before, but it will now be
+  // called automatically by the new useEffect hook below.
   const handleGetRecommendation = async () => {
+    // Note: We set isLoadingRec in the *new* useEffect hook,
+    // not here, to provide instant feedback.
+    
+    // Prevent multiple concurrent requests
+    if (isLoadingRec) return; 
+    
     setIsLoadingRec(true);
     setError(null);
 
@@ -586,7 +545,9 @@ export default function App() {
       const systemPrompt =
         "You are a friendly and encouraging diet coach. Provide a *brief* (2-3 sentences), actionable recommendation for the user. Focus on food groups or specific meal ideas. Do not just repeat the numbers.";
 
-      const apiKey = ''; // Leave empty
+      // IMPORTANT: This still requires a frontend-restricted API key
+      // for local testing.
+      const apiKey = ''; // Add your *frontend-restricted* API key here
       const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
 
       const payload = {
@@ -596,17 +557,16 @@ export default function App() {
         contents: [{ parts: [{ text: userQuery }] }],
       };
 
-      const response = await fetch('http://localhost:3001/analyze-image', {
+      // This fetch call correctly goes to the Google API
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          imageBase64: base64ImageData,
-          mimeType: file.type,
-        }),
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
-        throw new Error(`Google API error: ${response.statusText}`);
+        const err = await response.json();
+        throw new Error(`Google API error: ${err.error?.message || response.statusText}`);
       }
       
       const result = await response.json();
@@ -627,19 +587,53 @@ export default function App() {
       setIsLoadingRec(false);
     }
   };
+  
+  // --- NEW: 6. Automatic Recommendation Effect ---
+  // This effect runs when `dailyTotals` changes, automatically
+  // triggering a new recommendation after a 3-second delay.
+  useEffect(() => {
+    // Don't run until auth is ready and user is loaded
+    if (!isAuthReady || !userId) {
+      return;
+    }
+
+    // Clear any existing timer
+    if (recommendationTimerRef.current) {
+      clearTimeout(recommendationTimerRef.current);
+    }
+    
+    // Set loading state *before* the timer
+    // to give instant feedback
+    setIsLoadingRec(true);
+
+    // Set a new timer
+    recommendationTimerRef.current = setTimeout(() => {
+      handleGetRecommendation();
+    }, 3000); // 3-second debounce
+
+    // Cleanup: clear the timer if the component unmounts
+    return () => {
+      if (recommendationTimerRef.current) {
+        clearTimeout(recommendationTimerRef.current);
+      }
+    };
+  }, [dailyTotals, isAuthReady, userId]); // Re-run when totals change
+
 
   // --- Render App ---
   if (!isAuthReady) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      // STYLING: Updated auth screen background
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-green-50 to-cyan-50">
         <LoadingSpinner />
-        <p className="ml-2">Authenticating...</p>
+        <p className="ml-2 text-gray-600">Authenticating...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4 sm:p-8 font-inter">
+    // STYLING: Updated main background
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-cyan-50 p-4 sm:p-8 font-inter">
       {error && (
         <Modal
           title="An Error Occurred"
@@ -649,7 +643,8 @@ export default function App() {
       )}
 
       <header className="max-w-7xl mx-auto mb-6">
-        <h1 className="text-3xl font-bold text-gray-900">
+        {/* STYLING: Updated header color */}
+        <h1 className="text-3xl font-bold text-green-900">
           Dieter AI Dashboard
         </h1>
         <p className="text-gray-600">
@@ -671,8 +666,8 @@ export default function App() {
             <FoodList foodEntries={foodEntries} />
           </div>
           <div className="lg:col-span-1">
+            {/* --- NEW: Removed `onGetRecommendation` prop --- */}
             <Recommendation
-              onGetRecommendation={handleGetRecommendation}
               recommendation={recommendation}
               isLoading={isLoadingRec}
             />
