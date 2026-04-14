@@ -1,0 +1,7 @@
+int k[2][2][2] = {1,2,3,4,}, {5,6,7,8};
+int i, j, l ,
+for (i=0; i<3; i++)
+	for (j=0; j<2; j++) 
+		print ("k[%d][%d][%d] = %d, addr = %p\n", 
+			i, j, l, k[i][j][l],
+			&k[i][j][l];
